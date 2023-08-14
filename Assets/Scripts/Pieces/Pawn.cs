@@ -57,6 +57,8 @@ namespace EC
 
             transform.position = new Vector3(targetSquare.x + (offset - 0.25f), 0f, targetSquare.z - (offset - 0.25f));
             Position = position;
+
+            print(position);
         }
     }
 }
