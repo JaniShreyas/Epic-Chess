@@ -346,7 +346,12 @@ MonoBehaviour:
   square: {fileID: 2071820697165047142, guid: 61580e1a6e51d8a48b50047281db3c2f, type: 3}
   boardPrefab: {fileID: 1180892479955872389, guid: debc2b9832beeb84fb85f08eb1467b44, type: 3}
   gridSize: 8
-  pawnPrefab: {fileID: 84584486031396025, guid: 2f76dc2cb2890e541947758825181a92, type: 3}
+  pawnPrefab_w: {fileID: 84584486031396025, guid: 2f76dc2cb2890e541947758825181a92, type: 3}
+  kingPrefab_w: {fileID: 6933343705149199428, guid: 76ca8a60a90fa6d459df1d01565fbead, type: 3}
+  queenPrefab_w: {fileID: 7767224250511075668, guid: 18d572d191074f746879ac85e94134bd, type: 3}
+  bishopPrefab_w: {fileID: -6129365282182958752, guid: 41fb2aacb9f382244b2817325ffda22c, type: 3}
+  knightPrefab_w: {fileID: -6199750720948297924, guid: 0e3095358cef4f74ca6680a99bb58caf, type: 3}
+  rookPrefab_w: {fileID: -4831699594845187726, guid: 2629417615b713f489875dcb57eb9896, type: 3}
 --- !u!114 &1066089127
 MonoBehaviour:
   m_ObjectHideFlags: 0

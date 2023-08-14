@@ -13,7 +13,12 @@ namespace EC
         [SerializeField] private GameObject boardPrefab;
         [SerializeField] private int gridSize = 8;
 
-        [SerializeField] private Pawn pawnPrefab;
+        [SerializeField] private Pawn pawnPrefab_w;
+        [SerializeField] private King kingPrefab_w;
+        [SerializeField] private Queen queenPrefab_w;
+        [SerializeField] private Bishop bishopPrefab_w;
+        [SerializeField] private Knight knightPrefab_w;
+        [SerializeField] private Rook rookPrefab_w;
 
         //Create a 2d int array of size gridsize
         GameObject[] grid;
@@ -39,8 +44,8 @@ namespace EC
 
         private void Start()
         {
-            Pawn pawn = Instantiate(pawnPrefab);
-            pawn.Create(22, IPiece.Color.Black);
+            Bishop bishop = Instantiate(bishopPrefab_w);
+            bishop.Create(22, IPiece.Color.Black);
         }
 
         private void CreateSquareGrid()
@@ -63,11 +68,6 @@ namespace EC
                     newSquare.transform.parent = squaresParent.transform;
                 }
             }
-        }
-
-        private void Update()
-        {
-            
         }
 
         IPiece pieceToMove = null;
