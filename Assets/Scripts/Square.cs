@@ -9,9 +9,6 @@ namespace EC
     {
         public int Position { get; set; }
 
-        private void Start()
-        {
-            print(Position);
-        }
+        
     }
 }

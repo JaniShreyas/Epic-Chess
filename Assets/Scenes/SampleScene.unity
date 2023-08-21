@@ -352,6 +352,12 @@ MonoBehaviour:
   bishopPrefab_w: {fileID: -6129365282182958752, guid: 41fb2aacb9f382244b2817325ffda22c, type: 3}
   knightPrefab_w: {fileID: -6199750720948297924, guid: 0e3095358cef4f74ca6680a99bb58caf, type: 3}
   rookPrefab_w: {fileID: -4831699594845187726, guid: 2629417615b713f489875dcb57eb9896, type: 3}
+  pawnPrefab_b: {fileID: 84584486031396025, guid: 15b4b1794a2206c4cae79b9f1e604c6d, type: 3}
+  kingPrefab_b: {fileID: 6933343705149199428, guid: 9fe63facf994c85428a35848797ff3be, type: 3}
+  queenPrefab_b: {fileID: 7767224250511075668, guid: f5b65b1dcacc0f3498d0c8ad11c36586, type: 3}
+  bishopPrefab_b: {fileID: -6129365282182958752, guid: a9bdf23be71b93a44b07ab7c178f1122, type: 3}
+  knightPrefab_b: {fileID: -6199750720948297924, guid: d29dc2a0be4927e428ce03470bd02b6c, type: 3}
+  rookPrefab_b: {fileID: -4831699594845187726, guid: 0325d34cbd6a2274ba2a3c1d99d0bb67, type: 3}
 --- !u!114 &1066089127
 MonoBehaviour:
   m_ObjectHideFlags: 0

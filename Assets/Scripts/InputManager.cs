@@ -1,38 +1,40 @@
-using EC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+namespace EC
 {
-    public PlayerControls playerControls;
-
-    private GameManager gameManager;
-
-    private void Awake()
+    public class InputManager : MonoBehaviour
     {
-        playerControls = new PlayerControls();
-        gameManager = GetComponent<GameManager>();
-    }
+        public PlayerControls playerControls;
 
-    private void OnEnable()
-    {
-        playerControls.Enable();
-    }
+        private GameManager gameManager;
 
-    private void OnDisable()
-    {
-        playerControls.Disable();
-    }
+        private void Awake()
+        {
+            playerControls = new PlayerControls();
+            gameManager = GetComponent<GameManager>();
+        }
 
-    private void Start()
-    {
-        playerControls.Movement.Move.performed += ctx => gameManager.PieceMovement();
-    }
+        private void OnEnable()
+        {
+            playerControls.Enable();
+        }
 
-    private void Update()
-    {
-        
+        private void OnDisable()
+        {
+            playerControls.Disable();
+        }
+
+        private void Start()
+        {
+            playerControls.Movement.Move.performed += ctx => gameManager.PieceMovement();
+        }
+
+        private void Update()
+        {
+
+        }
     }
 }

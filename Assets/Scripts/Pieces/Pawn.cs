@@ -5,32 +5,32 @@ using UnityEngine.InputSystem.Interactions;
 
 namespace EC
 {
-    public class Pawn : MonoBehaviour, IPiece
+    public class Pawn : Piece
     {
         private int position;
-        private IPiece.Color color;
+        private Piece.Color color;
 
         private Transform graphics;
         private GameManager gameManager;
 
-        public GameManager GameManager
+        public override GameManager GameManager
         {
             get => gameManager;
         }
 
-        public int Position
+        public override int Position
         {
             get => position;
             set => position = value;
         }
 
-        public IPiece.Color ColorField
+        public override Piece.Color ColorField
         {
             get => color;
             set => color = value;
         }
 
-        public Transform Graphics 
+        public override Transform Graphics 
         {
             get => graphics;
         }
@@ -42,7 +42,7 @@ namespace EC
         }
 
 
-        public void Create(int position, IPiece.Color color)
+        public override void Create(int position, Piece.Color color)
         {
             Position = position;
             ColorField = color;
@@ -50,7 +50,7 @@ namespace EC
             Move(position);
         }
 
-        public void Move(int position)
+        public override void Move(int position)
         {
             float offset = GameManager.SquareLength / 2;
             Vector3 targetSquare = GameManager.Board[position].transform.localPosition;

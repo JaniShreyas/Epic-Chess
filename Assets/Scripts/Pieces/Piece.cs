@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EC
 {
-    public interface IPiece
+    public abstract class Piece: MonoBehaviour
     {
         // What does a chess piece need?
         // A position (will be overridden by the child classes)
@@ -24,21 +24,21 @@ namespace EC
         // If it does not have an enemy piece, the pawn will not move
         // We can also try to create a list of possible moves for the pawn or pieces in this case
 
-        public int Position { get; set; }
+        public abstract int Position { get; set; }
 
         public enum Color { White, Black };
-        public Color ColorField { get; set; }
+        public abstract Color ColorField { get; set; }
 
         //public enum Type { Pawn, Rook, Knight, Bishop, Queen, King };
         //public Type TypeField { get; set; }
 
-        public Transform Graphics { get; }
+        public abstract Transform Graphics { get; }
 
-        public GameManager GameManager { get; }
+        public abstract GameManager GameManager { get; }
 
-        public void Create(int position, IPiece.Color color);
+        public abstract void Create(int position, Color color);
 
-        public void Move(int position);
+        public abstract void Move(int position);
     }
 
 }

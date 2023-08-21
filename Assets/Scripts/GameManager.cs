@@ -20,8 +20,17 @@ namespace EC
         [SerializeField] private Knight knightPrefab_w;
         [SerializeField] private Rook rookPrefab_w;
 
+        [SerializeField] private Pawn pawnPrefab_b;
+        [SerializeField] private King kingPrefab_b;
+        [SerializeField] private Queen queenPrefab_b;
+        [SerializeField] private Bishop bishopPrefab_b;
+        [SerializeField] private Knight knightPrefab_b;
+        [SerializeField] private Rook rookPrefab_b;
+
         //Create a 2d int array of size gridsize
         GameObject[] grid;
+
+        Dictionary<char, Piece> pieces = new Dictionary<char, Piece>();
 
         private float squareLength;
 
@@ -40,12 +49,16 @@ namespace EC
             squareLength = square.transform.localScale.x;
             grid = new GameObject[gridSize * gridSize];
             CreateSquareGrid();
+            SetupPiecesDict();
         }
+
 
         private void Start()
         {
             Bishop bishop = Instantiate(bishopPrefab_w);
-            bishop.Create(22, IPiece.Color.Black);
+            bishop.Create(22, Piece.Color.Black);
+
+            Fen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
         }
 
         private void CreateSquareGrid()
@@ -70,14 +83,30 @@ namespace EC
             }
         }
 
-        IPiece pieceToMove = null;
+        private void SetupPiecesDict()
+        {
+            pieces.Add('K', kingPrefab_w);
+            pieces.Add('Q', queenPrefab_w);
+            pieces.Add('B', bishopPrefab_w);
+            pieces.Add('N', knightPrefab_w);
+            pieces.Add('R', rookPrefab_w);
+            pieces.Add('P', pawnPrefab_w);
+            
+            pieces.Add('k', kingPrefab_b);
+            pieces.Add('q', queenPrefab_b);
+            pieces.Add('b', bishopPrefab_b);
+            pieces.Add('n', knightPrefab_b);
+            pieces.Add('r', rookPrefab_b);
+            pieces.Add('p', pawnPrefab_b);
+        }
+
+        Piece pieceToMove = null;
 
         public void PieceMovement()
         {
-            print("Hi there");
             if(Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit))
             {
-                IPiece piece = hit.collider.GetComponent<IPiece>();
+                Piece piece = hit.collider.GetComponent<Piece>();
                 Square square = hit.collider.GetComponent<Square>();
 
                 pieceToMove ??= piece;
@@ -87,6 +116,34 @@ namespace EC
                     //Note: Later check if the square is a valid move and is empty
                     pieceToMove?.Move(square.Position);
                     pieceToMove = null;
+                }
+            }
+        }
+        
+        public void Fen(string fenSequence)
+        {
+            int file = 0, rank = 7;
+            foreach(char symbol in fenSequence)
+            {
+                if (symbol == '/')
+                {
+                    file = 0;
+                    rank--;
+                }
+                else
+                {
+                    if (char.IsDigit(symbol))
+                    {
+                        file += (int)char.GetNumericValue(symbol);
+                    }
+                    else
+                    {
+                        Piece.Color pieceColor = char.IsUpper(symbol) ? Piece.Color.White : Piece.Color.Black;
+                        Piece piece = pieces[symbol];
+                        Piece pieceToInstantiate = Instantiate(piece);
+                        pieceToInstantiate.Create(rank * gridSize + file, pieceColor);
+                        file++;
+                    }   
                 }
             }
         }
